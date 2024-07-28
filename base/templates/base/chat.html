@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'style/chat.css' %}">
+{% endblock extra_css %}
+
+{% block page_title %}
+    <h2>All available chats!</h2>
+{% endblock page_title %}
+
+{% block page_content %}
+
+
+    <div class="outer-container">
+        <div class="card-container">
+            {% for chat in chats %}
+                <div class="card border-info">
+                    <div class="card-body">
+                        <div class="info-container">
+                            <h4 id="chat-name"><a href="{% url 'chat_details' chat.id %}">{{ chat.name }}</a></h4>
+                            <h5>Host: {{ chat.host }}</h5>
+                            <h6>Created: {{ chat.created|timesince }} ago</h6>
+                            <p>Description: {{ chat.description|slice:100 }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock page_content %}

@@ -1,0 +1,37 @@
+h2 {
+    margin: 30px;
+    text-align: center;
+}
+
+.outer-container {
+    display: flex;
+    justify-content: center;
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.card {
+    color: white;
+    background-color: #962E2A;
+    border-radius: 20px;
+    width: 75%;
+    margin-top: 10px;
+}
+
+.card:hover {
+    box-shadow: 2px 2px 10px rgba(21, 248, 195, 0.637);
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+#chat-name {
+    text-align: center;
+}
