@@ -1,0 +1,30 @@
+h2 {
+    margin: 30px;
+    text-align: center;
+    color: white;
+}
+
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+form[name="login-form"] {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: center;
+    width: 50%;
+    background-color: #962E2A;
+    color: white;
+}
+
+#register-link {
+    text-decoration: none;
+    font-size: 20px;
+    color: white;
+    text-align: center;
+}

@@ -16,7 +16,7 @@
             <div class="card-body chat-container">
                 {% for message in messages %}
                     <div class="message-container">
-                        <div class="card message-card">
+                        <div class="card message-card {% if message.author == user %} my-message {% else %} other-message {% endif %}">
                             {{ message.author }}: {{ message.body }}
                             <br>
                             <small>{{ message.created|timesince }} ago</small>
@@ -24,18 +24,18 @@
                     </div>
                 {% endfor %}
             </div>
-            <div class="message-container">
-                <form method="post" action="{% url 'success_send' chat.id %}">
+            <div class="form-container">
+                <form id="message-form" method="post" action="{% url 'success_send' chat.id %}">
                     {% csrf_token %}
-                    {{ form.as_p }}
-                    <button type="submit" class="btn btn-success">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-send" viewBox="0 0 16 16">
-                            <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576zm6.787-8.201L1.591 6.602l4.339 2.76z"/>
-                        </svg>
-                    </button>
+                    {% for field in form %}
+                        {{ field }}
+                    {% endfor %}
+                    <button type="submit" class="btn btn-success">Submit</button>
                 </form>
             </div>
         </div>
     </div>
+
+    <script src="{% static 'js/chat_details.js' %}"></script>
 
 {% endblock page_content %}

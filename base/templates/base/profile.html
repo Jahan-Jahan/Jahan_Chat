@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block page_title %}
+    <h2>{{ user.username }} is here!</h2>
+{% endblock page_title %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'style/profile.css' %}">
+{% endblock extra_css %}
+
+{% block page_content %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h3>Information</h3>
+                <div class="card">
+                    <div class="info-container">
+                        <p><strong>Username: </strong>{{user.username}}</p>
+                        <p><strong>Email: </strong>{{user.email}}</p>
+                        <a href="">Change password</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <h3>Activity</h3>
+                <div class="card">
+                    <div class="activity-container">
+                        {% for message in messages %}
+                            In "{{message.chat.name}}":
+                            <br>
+                            {{message.body|slice:50}}
+                            {% if message|length|get_digit:"-1" > 50 %}
+                                ...
+                            {% endif %}
+                            <br>
+                            At: {{message.created}}
+                            <br>
+                            <hr>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <h3>Chats</h3>
+                <div class="card">
+                    <div class="chat-container">
+                        {% for chat in chats %}
+                            <h4>{{chat.name}}</h4>
+                            <hr>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock page_content %}

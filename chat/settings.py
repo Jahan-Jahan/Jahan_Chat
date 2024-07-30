@@ -53,6 +53,14 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'chat.urls'
 
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'chat'
+LOGOUT_REDIRECT_URL = 'chat'
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+]
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',

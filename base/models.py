@@ -15,7 +15,7 @@ class Chat(models.Model):
         return f"'{self.name}' hosted by '{self.host.username}'"
 
 class Message(models.Model):
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="messages")
     chat = models.ForeignKey(Chat, on_delete=models.CASCADE, related_name='messages')
     body = models.TextField()
     created = models.DateTimeField(auto_now_add=True)

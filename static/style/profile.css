@@ -1,0 +1,16 @@
+h2 {
+    padding: 20px;
+    text-shadow: 1px 1px 5px rgba(0, 255, 179, 0.697);
+}
+
+h3, h2 {
+    color: white;
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+}
+
