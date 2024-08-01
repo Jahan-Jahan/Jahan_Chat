@@ -29,18 +29,20 @@
                 <div class="card">
                     <div class="activity-container">
                         {% for message in messages %}
-                            <div class="message-info">
-                                In "{{message.chat.name}}":
-                                <br>
-                                Message: "{{message.body|slice:50}}
-                                {% if message.body|length|get_digit:"-1" > 50 %}
-                                    ...
-                                {% endif %}"
-                                <br>
-                                At: {{message.created}}
-                                <br>
-                                <hr>
-                            </div>
+                            {% if message.chat.status == "open" %}
+                                <div class="message-info">
+                                    In "{{message.chat.name}}":
+                                    <br>
+                                    Message: "{{message.body|slice:50}}
+                                    {% if message.body|length|get_digit:"-1" > 50 %}
+                                        ...
+                                    {% endif %}"
+                                    <br>
+                                    At: {{message.created}}
+                                    <br>
+                                    <hr>
+                                </div>
+                            {% endif %}
                         {% endfor %}
                     </div>
                 </div>
@@ -51,7 +53,9 @@
                     <div class="chat-container">
                         {% for chat in chats %}
                             <div class="chat-name">
+                                {% if chat.status == "open" %}
                                 <h4><a href="{% url 'chat_details' chat.name chat.id %}">{{chat.name}}</a></h4>
+                                {% endif %}
                             </div>
                             <hr>
                         {% endfor %}

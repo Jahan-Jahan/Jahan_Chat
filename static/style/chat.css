@@ -1,7 +1,8 @@
 h2 {
-    margin: 30px;
+    padding: 50px;
     text-align: center;
     color: white;
+    text-shadow: 1px 1px 5px rgba(0, 255, 179, 0.697);
 }
 
 .outer-container {
@@ -16,12 +17,16 @@ h2 {
     gap: 20px;
 }
 
+h4 {
+    color: #72dfa3;
+    text-shadow: 1px 1px 5px rgba(0, 255, 179, 0.697);
+}
+
 .card {
-    color: white;
+    color: #72dfa3;
     background-color: #962E2A;
     border-radius: 20px;
     width: 75%;
-    margin-top: 10px;
 }
 
 .card:hover {
@@ -36,4 +41,12 @@ a {
 
 #chat-name {
     text-align: center;
+}
+
+.create-chat-btn {
+    padding: 10px;
+    display: block;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }

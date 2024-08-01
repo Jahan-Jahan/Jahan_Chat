@@ -11,3 +11,16 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+    const createChatBtn = document.querySelector(".create-chat-btn");
+    const baseUrl = createChatBtn.dataset.chatDetailsUrl;
+
+    if (createChatBtn) {
+        createChatBtn.addEventListener("click", function() {
+            window.location.href = baseUrl;
+        });
+    } else {
+        console.log("Create Chat button not found.");
+    }
+});

@@ -9,7 +9,7 @@ body {
 
 .nav-item {
     font-size: 1.5em;
-    padding-left: 10px;
+    padding-left: 15px;
     margin: 0;
 }
 
@@ -20,4 +20,8 @@ body {
 .nav-item .nav-link:hover {
     text-shadow: 1px 1px 3px #e3867d7d;
     font-weight: bold;
+}
+
+.navbar-brand {
+    color: rgb(60, 60, 60);
 }

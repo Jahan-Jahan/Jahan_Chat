@@ -12,7 +12,6 @@
 
 {% block page_content %}
 
-
     <div class="outer-container" data-chat-details-url="{% url 'chat_details' 'CHAT_NAME' 'CHAT_ID' %}">
         <div class="card-container">
             {% for chat in chats %}
@@ -29,6 +28,8 @@
             {% endfor %}
         </div>
     </div>
+    
+    <button class="btn btn-warning create-chat-btn" type="submit" data-chat-details-url="{% url 'create_chat' %}">new Chat</button>
 
     <script src="{% static 'js/chat.js' %}"></script>
 

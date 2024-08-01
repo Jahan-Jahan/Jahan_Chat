@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+
 {% load static %}
 
 {% block extra_css %}
@@ -11,27 +12,54 @@
 {% block page_content %}
 
     <div class="container mt-5">
-        <div class="card">
-            <div class="card-header">{{ chat.name }}</div>
-            <div class="card-body chat-container">
-                {% for message in messages %}
-                    <div class="message-container">
-                        <div class="card message-card {% if message.author == user %} my-message {% else %} other-message {% endif %}">
-                            {{ message.author }}: {{ message.body }}
-                            <br>
-                            <small>{{ message.created|timesince }} ago</small>
+        <div class="row">
+            <div class="col-9">
+                <div class="card">
+                    <div class="card-header">{{ chat.name }}</div>
+                    <div class="card-body chat-container">
+                        {% for message in messages %}
+                            <div class="message-container">
+                                <div class="card message-card {% if message.author == user %}my-message{% else %}other-message{% endif %}">
+                                    {{ message.author }}: {{ message.body }}
+                                    <br>
+                                    <small>{{ message.created|timesince }} ago</small>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="form-container">
+                        <form id="message-form" method="post" action="{% url 'success_send' chat.id %}">
+                            {% csrf_token %}
+                            {% for field in form %}
+                                {{ field }}
+                            {% endfor %}
+                            <button type="submit" class="btn btn-success">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="participants-container">
+                    <div class="card">
+                        <div class="card-header">Participants</div>
+                        <div class="card-body">
+                            {% for participant in participants %}
+                                <div class="participants-links">
+                                    <a href="{% url 'showing_profile' participant.username participant.id %}" target="_blank">{{ participant }}</a>
+                                </div>
+                            {% endfor %}
                         </div>
                     </div>
-                {% endfor %}
-            </div>
-            <div class="form-container">
-                <form id="message-form" method="post" action="{% url 'success_send' chat.id %}">
-                    {% csrf_token %}
-                    {% for field in form %}
-                        {{ field }}
-                    {% endfor %}
-                    <button type="submit" class="btn btn-success">Submit</button>
-                </form>
+                    <div class="add-participant">
+                        <form action="{% url 'add_participant' chat.name chat.id %}" method="post">
+                            {% csrf_token %}
+                            <div class="form-container">
+                                <input class="form-control" type="text" name="username" placeholder="username">
+                                <button class="btn btn-success" type="submit">Add participant</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

@@ -1,6 +1,5 @@
-h2 {
-    text-align: center;
-    margin-top: 25px;
+.container {
+    margin-bottom: 50px;
 }
 
 .chat-container {
@@ -41,7 +40,7 @@ h2 {
     background-color: #A64C48;
 }
 
-textarea {
+.form-container form textarea {
     width: 100%;
     height: 100px;
     box-sizing: border-box;
@@ -51,4 +50,33 @@ textarea {
     border: 1px solid #ccc;
     border-radius: 4px;
     resize: horizontal;
+}
+
+.participants-container .card-body {
+    background-color: #A64C48;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+.participants-container .card-body .participants-links a {
+    font-size: 20px;
+    text-decoration: none;
+    padding: 20px;
+    color: gold;
+}
+
+.add-participant {
+    padding: 10px;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.form-container button {
+    width: 60%;
+    align-self: center;
 }

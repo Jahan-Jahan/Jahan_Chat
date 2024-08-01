@@ -1,16 +1,51 @@
+h3, h2 {
+    color: #72dfa3;
+    text-align: center;
+    padding: 15px;
+    text-shadow: 1px 1px 2px white;
+}
+
 h2 {
-    padding: 20px;
+    color: white;
+    padding: 30px;
     text-shadow: 1px 1px 5px rgba(0, 255, 179, 0.697);
 }
 
-h3, h2 {
-    color: white;
-    text-align: center;
-}
-
-.container {
+.profile-container {
     display: flex;
     flex-direction: column;
     padding: 30px;
+    margin-bottom: 50px;
+    color: white;
+    background-color: #962E2A;
 }
 
+.activity-container, .info-container, .chat-container {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    background-color: #A64C48;
+    color: white;
+}
+
+.activity-container:hover, .info-container:hover, .chat-container:hover {
+    box-shadow: 2px 2px 10px rgba(0, 255, 179, 0.697);
+}
+
+#change-password {
+    align-self: center;
+    text-decoration: none;
+    color: #b5d8e9;
+    font-weight: bold;
+}
+
+.chat-name > h4 {
+    text-align: center;
+    margin-top: 15px;
+    padding: 10px;
+}
+
+.chat-name > h4 > a {
+    text-decoration: none;
+    color: white;
+}

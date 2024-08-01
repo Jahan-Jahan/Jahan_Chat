@@ -2,11 +2,12 @@ from django.db import models
 from django.contrib.auth.models import User
 
 class Chat(models.Model):
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=50, unique=True)
     host = models.ForeignKey(User, on_delete=models.CASCADE, related_name='hosted_chats')
     participants = models.ManyToManyField(User, related_name='chats')
     description = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
+    status = models.CharField(max_length=10, choices=[("open", "Open"), ("close", "Close")], default="Open")
 
     class Meta:
         ordering = ['-created']
