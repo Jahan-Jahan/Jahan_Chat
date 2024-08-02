@@ -33,7 +33,7 @@
                 <a class="nav-link" href="{% if user.is_authenticated %}{% url 'profile' user.username user.id %}{% else %}{% url 'login' %}{% endif %}">Profile</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Direct Message</a>
+                <a class="nav-link" href="{% url 'friends' %}">Friends</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">Comment</a>

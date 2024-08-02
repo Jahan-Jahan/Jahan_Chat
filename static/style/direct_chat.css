@@ -52,28 +52,6 @@
     resize: horizontal;
 }
 
-.participants-container .card-body {
-    background-color: #A64C48;
-    color: white;
-    text-align: center;
-    padding: 10px;
-}
-
-.participants-container .card-body .participants-links a {
-    font-size: 20px;
-    text-decoration: none;
-    margin: 10px;
-    color: gold;
-}
-
-.participants-container .card-body .participants-links {
-    margin: 10px;
-}
-
-.add-participant {
-    padding: 10px;
-}
-
 .form-container {
     display: flex;
     flex-direction: column;

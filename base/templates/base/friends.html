@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'style/friends.css' %}">
+{% endblock extra_css %}
+
+{% block page_title %}
+    <h2>All users you direct messaging with!</h2>
+{% endblock page_title %}
+
+{% block page_content %}
+    <div class="user-container">
+        {% for friend in friends %}
+            {% if friend != request.user %}
+            <div class="card card-body" data-direct-message-url="{% url 'direct' friend.username %}">
+                <a href="{% url 'direct' friend.username %}">{{ friend.username }}</a>
+            </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+    <script src="{% static 'js/friends.js' %}"></script>
+{% endblock page_content %}

@@ -5,6 +5,7 @@ body {
 
 .navbar {
     background-color: #CEE6F2;
+    box-shadow: 1px 1px 5px rgba(255, 217, 0, 0.523);
 }
 
 .nav-item {

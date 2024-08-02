@@ -7,7 +7,12 @@
 {% endblock extra_css %}
 
 {% block page_title %}
-    <h2>{{ user.username }} is here!</h2>
+    <div class="title-container">
+        <h2>{{ user.username }} is here!</h2>
+        <button class="btn btn-success add-friend" type="submit" data-add-friend-url="{% url 'add_friend' user.id %}" {% if user in request.user.friends.all %}disabled{% endif %}>
+            Add-Friend
+        </button>
+    </div>
 {% endblock page_title %}
 
 {% block page_content %}
@@ -28,17 +33,17 @@
                 <h3>Activity</h3>
                 <div class="card">
                     <div class="activity-container">
-                        {% for message in messages %}
-                            {% if message.chat.status == "open" %}
+                        {% for chat_message in chat_messages %}
+                            {% if chat_message.chat.status == "open" %}
                                 <div class="message-info">
-                                    In "{{message.chat.name}}":
+                                    In "{{chat_message.chat.name}}":
                                     <br>
-                                    Message: "{{message.body|slice:50}}
-                                    {% if message.body|length|get_digit:"-1" > 50 %}
+                                    Message: "{{chat_message.body|slice:50}}
+                                    {% if chat_message.body|length|get_digit:"-1" > 50 %}
                                         ...
                                     {% endif %}"
                                     <br>
-                                    At: {{message.created}}
+                                    At: {{chat_message.created}}
                                     <br>
                                     <hr>
                                 </div>
@@ -54,7 +59,9 @@
                         {% for chat in chats %}
                             <div class="chat-name">
                                 {% if chat.status == "open" %}
-                                <h4><a href="{% url 'chat_details' chat.name chat.id %}">{{chat.name}}</a></h4>
+                                    {% if not chat.isDirect %}
+                                        <h4><a href="{% url 'chat_details' chat.name chat.id %}">{{chat.name}}</a></h4>
+                                    {% endif %}
                                 {% endif %}
                             </div>
                             <hr>
@@ -64,5 +71,7 @@
             </div>
         </div>
     </div>
+
+    <script src="{% static 'js/showing_profile_other.js' %}"></script>
 
 {% endblock page_content %}

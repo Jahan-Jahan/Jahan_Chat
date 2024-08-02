@@ -39,13 +39,24 @@ h2 {
     font-weight: bold;
 }
 
-.chat-name > h4 {
+.chat-name h4 {
     text-align: center;
     margin-top: 15px;
     padding: 10px;
 }
 
-.chat-name > h4 > a {
+.chat-name h4 a {
     text-decoration: none;
     color: white;
+}
+
+.title-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.add-friend {
+    height: 50px;
+    align-self: flex-end;
 }

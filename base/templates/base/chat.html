@@ -15,16 +15,18 @@
     <div class="outer-container" data-chat-details-url="{% url 'chat_details' 'CHAT_NAME' 'CHAT_ID' %}">
         <div class="card-container">
             {% for chat in chats %}
-                <div class="card border-info" data-chat-id="{{ chat.id }}" data-chat-name="{{ chat.name }}">
-                    <div class="card-body">
-                        <div class="info-container">
-                            <h4 id="chat-name"><a href="{% url 'chat_details' chat.name chat.id %}">{{ chat.name }}</a></h4>
-                            <h5>Host: {{ chat.host }}</h5>
-                            <h6>Created: {{ chat.created }}</h6>
-                            <p>Description: {{ chat.description|slice:100 }}</p>
+                {% if chat.status == "open" and not chat.isDirect or user == chat.host and not chat.isDirect or user in chat.participants and not chat.isDirect %}
+                    <div class="card border-info" data-chat-id="{{ chat.id }}" data-chat-name="{{ chat.name }}">
+                        <div class="card-body">
+                            <div class="info-container">
+                                <h4 id="chat-name"><a href="{% url 'chat_details' chat.name chat.id %}">{{ chat.name }}</a></h4>
+                                <h5>Host: {{ chat.host }}</h5>
+                                <h6>Created: {{ chat.created }}</h6>
+                                <p>Description: {{ chat.description|slice:100 }}</p>
+                            </div>
                         </div>
                     </div>
-                </div>
+                {% endif %}
             {% endfor %}
         </div>
     </div>

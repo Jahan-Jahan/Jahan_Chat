@@ -1,8 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import PasswordChangeForm
 from django.forms import ModelForm
-from .models import Message, Chat
-from django.contrib.auth.models import User
+from .models import Message, Chat, CustomUser
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 
 class MessageForm(ModelForm):
@@ -32,7 +31,7 @@ class RegisterForm(UserCreationForm):
     )
 
     class Meta:
-        model = User
+        model = CustomUser
         fields = ["username", "email", "password1", "password2"]
 
 class CustomAuthenticationForm(AuthenticationForm):
@@ -44,7 +43,7 @@ class CustomAuthenticationForm(AuthenticationForm):
     )
 
     class Meta:
-        model = User
+        model = CustomUser
         fields = ["username", "password"]
 
 class CustomPasswordChangeForm(PasswordChangeForm):

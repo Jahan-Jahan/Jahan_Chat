@@ -28,16 +28,16 @@
                 <h3>Activity</h3>
                 <div class="card">
                     <div class="activity-container">
-                        {% for message in messages %}
+                        {% for chat_message in chat_messages %}
                             <div class="message-info">
-                                In "{{message.chat.name}}":
+                                In "{{chat_message.chat.name}}":
                                 <br>
-                                Message: "{{message.body|slice:50}}
-                                {% if message.body|length|get_digit:"-1" > 50 %}
+                                Message: "{{chat_message.body|slice:50}}
+                                {% if chat_message.body|length|get_digit:"-1" > 50 %}
                                     ...
                                 {% endif %}"
                                 <br>
-                                At: {{message.created}}
+                                At: {{chat_message.created}}
                                 <br>
                                 <hr>
                             </div>
@@ -50,10 +50,12 @@
                 <div class="card">
                     <div class="chat-container">
                         {% for chat in chats %}
-                            <div class="chat-name">
-                                <h4><a href="{% url 'chat_details' chat.name chat.id %}">{{chat.name}}</a></h4>
-                            </div>
-                            <hr>
+                            {% if not chat.isDirect %}
+                                <div class="chat-name">
+                                    <h4><a href="{% url 'chat_details' chat.name chat.id %}">{{chat.name}}</a></h4>
+                                </div>
+                                <hr>
+                            {% endif %}
                         {% endfor %}
                     </div>
                 </div>

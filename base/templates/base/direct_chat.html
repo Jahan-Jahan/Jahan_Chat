@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'style/direct_chat.css' %}">
+{% endblock extra_css %}
+
+{% block page_title %}
+{% endblock page_title %}
+
+{% block page_content %}
+    <div class="card">
+        <div class="card-header">{{ user.username }}-{{ request.user.username }}</div>
+        <div class="card-body chat-container">
+            {% for chat_message in chat_messages %}
+                <div class="message-container">
+                    <div class="card message-card {% if chat_message.author == user %}my-message{% else %}other-message{% endif %}">
+                        {{ chat_message.author }}: {{ chat_message.body }}
+                        <br>
+                        <small>{{ chat_message.created|timesince }} ago</small>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="form-container">
+            <form id="message-form" method="post" action="{% url 'success_direct_send' chat.id %}">
+                {% csrf_token %}
+                {% for field in form %}
+                    {{ field }}
+                {% endfor %}
+                <button type="submit" class="btn btn-success">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="{% static 'js/direct_chat.js' %}"></script>
+{% endblock page_content %}
