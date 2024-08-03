@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import PasswordChangeForm
 from django.forms import ModelForm
-from .models import Message, Chat, CustomUser
+from .models import Message, Chat, CustomUser, Comment
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 
 class MessageForm(ModelForm):
@@ -72,3 +72,16 @@ class CreateChatForm(ModelForm):
         model = Chat
         fields = ["name", "description", "status"]
         exclude = ["host"]
+
+class CommentForm(ModelForm):
+    topic = forms.CharField(
+        required=False,
+        widget=forms.TextInput(attrs={"class": "form-control", "placeholder": "Topic(optional)"})
+    )
+    body = forms.CharField(
+        widget=forms.Textarea(attrs={"class": "form-control", "placeholder": "Comment"})
+    )
+
+    class Meta:
+        model = Comment
+        fields = ["topic", "body"]

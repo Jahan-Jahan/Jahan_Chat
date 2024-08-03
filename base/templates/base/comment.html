@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'style/comment.css' %}">
+{% endblock extra_css %}
+
+{% block page_title %}
+    <h2>Leave a comment!</h2>
+{% endblock page_title %}
+
+{% block page_content %}
+    <div class="form-container">
+        <form method="post">
+            {% csrf_token %}
+            {% for field in form %}
+                <div class="form-group">
+                    {{ field.label_tag }}<br>
+                    {{ field }}
+                    {% if field.errors %}
+                        <div class="text-danger">
+                            {% for error in field.errors %}
+                                {{ error }}<br>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+            <button class="btn btn-success" type="submit">Send</button>
+        </form>
+    </div>
+{% endblock page_content %}

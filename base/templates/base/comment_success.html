@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'style/comment_success.css' %}">
+{% endblock extra_css %}
+
+{% block page_title %}
+    <h2>Commented successfully!</h2>
+{% endblock page_title %}
+
+{% block page_content %}
+    <p id="info-text">Your comment has been sent to the Jahan!</p>
+{% endblock page_content %}

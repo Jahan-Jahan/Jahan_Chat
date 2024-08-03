@@ -1,0 +1,6 @@
+h2, #info-text {
+    padding: 10px;
+    text-align: center;
+    color: white;
+    text-shadow: 1px 1px 5px rgba(0, 255, 179, 0.697);
+}

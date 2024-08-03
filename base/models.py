@@ -59,3 +59,12 @@ class Message(models.Model):
 
     def __str__(self):
         return self.body[:50]
+
+class Comment(models.Model):
+    author = models.CharField(max_length=100, blank=False)
+    email = models.EmailField(blank=False)
+    topic = models.CharField(max_length=50, blank=True)
+    body = models.TextField(max_length=500, blank=False)
+
+    def __str__(self) -> str:
+        return self.body[:50]
