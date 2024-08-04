@@ -287,6 +287,22 @@ def editMessage(request, message_id):
             return JsonResponse({'success': False, 'error': 'You are not the author of this message.'})
     return JsonResponse({'success': False, 'error': 'Invalid request method.'})
 
+def search(request):
+    query = request.GET.get("search") if request.GET.get("search") else ""
+    chats = Chat.objects.filter(
+        Q(name__icontains=query) | 
+        Q(host__username__icontains=query) | 
+        Q(description__icontains=query)
+    ).distinct()
+    users = CustomUser.objects.filter(
+        Q(username__icontains=query)
+    ).distinct()
+    context = {
+        "chats": chats,
+        "users": users,
+    }
+    return render(request, "base/search_result.html", context=context)
+
 class CustomPasswordChangeView(LoginRequiredMixin, PasswordChangeView):
     form_class = CustomPasswordChangeForm
     template_name = "base/change_password.html"

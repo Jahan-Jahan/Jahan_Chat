@@ -25,7 +25,6 @@
                     <div class="info-container">
                         <p><strong>Username: </strong>{{user.username}}</p>
                         <p><strong>Email: </strong>{{user.email}}</p>
-                        <a id="change-password" href="{% url 'change_password' %}">Change password</a>
                     </div>
                 </div>
             </div>
@@ -64,7 +63,7 @@
                                     {% endif %}
                                 {% endif %}
                             </div>
-                            <hr>
+                            {% if chat.status == "open" %}<hr>{% endif %}
                         {% endfor %}
                     </div>
                 </div>

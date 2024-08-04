@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'style/search_result.css' %}">
+{% endblock extra_css %}
+
+{% block page_title %}
+{% endblock page_title %}
+
+{% block page_content %}
+    <div class="card result-container">
+        <div class="card-header"><h3>Results</h3></div>
+        <div class="card-body whole-result-container">
+            <div class="card chats-container">
+                <div class="card-header chat-header"><h4>Chats</h4></div>
+                <div class="card-body chats">
+                    {% for chat in chats %}
+                        {% if chat.status == "open" %}
+                            <div class="card chat" data-chat-url="{% url 'chat_details' chat.name chat.id %}">
+                                <a href="{% url 'chat_details' chat.name chat.id %}">{{ chat.name }}</a>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="card users-container">
+                <div class="card-header user-header"><h4>Users</h4></div>
+                <div class="card-body users">
+                    {% for user in users %}
+                        <div class="card user" data-user-url="{% url 'showing_profile' user.username user.id %}">
+                            <a href="{% url 'showing_profile' user.username user.id %}">{{ user.username }}</a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static 'js/search_result.js' %}"></script>
+{% endblock page_content %}

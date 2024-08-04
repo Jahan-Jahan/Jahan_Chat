@@ -23,7 +23,6 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 $(document).ready(function() {
-    // Delete chat button
     $('.delete-chat').click(function() {
         const chatId = $(this).data('chat-id');
         $(this).hide();

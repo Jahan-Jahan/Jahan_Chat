@@ -1,0 +1,45 @@
+.result-container {
+    display: block;
+    margin: auto;
+    margin-top: 50px;
+    width: 75%;
+}
+
+.card-header {
+    text-align: center;
+    background-color: #962E2A;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(88, 222, 234, 0.56);
+}
+
+.whole-result-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 20px;
+    background-color: #A64C48;
+}
+
+.chats-container, .users-container {
+    flex: 1;
+    background-color: #E3867D;
+}
+
+.chats-container:hover, .users-container:hover {
+    box-shadow: 2px 2px 10px rgba(21, 248, 195, 0.685);
+}
+
+.chat, .user {
+    margin-bottom: 10px;
+    text-align: center;
+    background-color: #668886;
+}
+
+.chat:hover, .user:hover {
+    box-shadow: 2px 2px 8px rgba(21, 248, 195, 0.685);
+}
+
+.chat a, .user a {
+    text-decoration: none;
+    color: #C7EFDE;
+}

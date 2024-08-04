@@ -34,4 +34,6 @@ urlpatterns = [
     path('delete-chat/<str:pk>/', views.deleteChat, name='delete_chat'),
     path('delete-message/', views.deleteMessage, name='delete_message'),
     path('edit-message/<int:message_id>/', views.editMessage, name='edit_message'),
+    
+    path("search/", views.search, name="search"),
 ]
