@@ -39,8 +39,8 @@ This Django chat application provides a platform for users to engage in real-tim
 
 1. **Clone the repository:**
    ```bash
-   git clone <repository-url>
-   cd <repository-folder>
+   git clone https://github.com/Jahan-Jahan/Jahan_Chat.git
+   cd Jahan_Chat
 2. **Install dependencies:**
    ```bash
    pip install -r requirements.txt
